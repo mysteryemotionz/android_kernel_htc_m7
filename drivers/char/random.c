@@ -81,9 +81,18 @@
 
 #define LONGS(x) (((x) + sizeof(unsigned long) - 1)/sizeof(unsigned long))
 
-static int random_read_wakeup_thresh = 64;
+/*
+ * The minimum number of bits of entropy before we wake up a read on
+ * /dev/random.  Should be enough to do a significant reseed.
+ */
+static int random_read_wakeup_thresh = 1024;
 
-static int random_write_wakeup_thresh = 128;
+/*
+ * If the entropy count falls under this number of bits, then we
+ * should wake up processes which are selecting or polling on write
+ * access to /dev/random.
+ */
+static int random_write_wakeup_thresh = 2048;
 
 
 static int trickle_thresh __read_mostly = INPUT_POOL_WORDS * 28;
