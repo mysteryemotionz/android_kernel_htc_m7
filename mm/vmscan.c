@@ -124,8 +124,11 @@ struct mem_cgroup_zone {
 #define prefetchw_prev_lru_page(_page, _base, _field) do { } while (0)
 #endif
 
-int vm_swappiness = 60;
-long vm_total_pages;	
+/*
+ * From 0 .. 100.  Higher means more swappy.
+ */
+int vm_swappiness = 45;
+long vm_total_pages;	/* The total number of pages which the VM controls */
 
 static LIST_HEAD(shrinker_list);
 static DECLARE_RWSEM(shrinker_rwsem);

@@ -53,7 +53,7 @@ unsigned long dirty_background_bytes;
 
 int vm_highmem_is_dirtyable;
 
-int vm_dirty_ratio = 20;
+int vm_dirty_ratio = 10;
 
 unsigned long vm_dirty_bytes;
 
